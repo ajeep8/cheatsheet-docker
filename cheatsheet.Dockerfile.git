@@ -1,0 +1,19 @@
+FROM node:14-alpine AS node_git
+RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.tuna.tsinghua.edu.cn/g' /etc/apk/repositories \
+  && apk add --no-cache git
+
+FROM node_git AS cheatsheet
+#RUN git config --global https.proxy 'http://192.168.100.199:7890' \
+#RUN git clone http://192.168.100.199:8130/ajeep/cheat-sheet-maker.git; pwd; ls -al \
+#RUN git config --global https.proxy 'http://10.222.1.1:7890' \
+#RUN git clone https://github.com/ajeep8/cheat-sheet-maker.git \
+COPY cheat-sheet-maker /cheat-sheet-maker
+RUN pwd; ls -al; cd cheat-sheet-maker \
+  && npm -v; npm config set registry https://registry.npm.taobao.org; npm install \
+  && cd client; npm install
+
+COPY _env /cheat-sheet-maker/.env
+
+WORKDIR /cheat-sheet-maker
+CMD [ "npm", "run", "dev" ]
+
