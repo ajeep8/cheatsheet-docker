@@ -73,7 +73,7 @@ git reset --hard origin/master
 
 # 同步到远程库与回退
 
-`git push`将本地库推送到远程库。
+`git push`  # 将本地库推送到远程库。
 
 如果发现错了想回退，就得强制push了：
 
