@@ -40,7 +40,7 @@ services:
       - ./_env:/cheat-sheet-maker/.env
     ports:
       - "5080:3000"
-      - "5000:5000"
+      - "5050:5000"
     #env_file: ./docker/fqdn.env
     #entrypoint: /mnt/openssl/create.sh
     command: ["npm", "run", "start", "--production"]
