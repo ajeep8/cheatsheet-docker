@@ -29,7 +29,7 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile
-    image: "cheatsheet:dev"
+    image: "cheatsheet:v0.1"
     depends_on:
       - mongo
     restart: unless-stopped
@@ -43,8 +43,8 @@ services:
       - "5000:5000"
     #env_file: ./docker/fqdn.env
     #entrypoint: /mnt/openssl/create.sh
-    #command: ["npm", "run", "start", "--production"]
-    command: ["npm", "run", "dev"]
+    command: ["npm", "run", "start", "--production"]
+    #command: ["npm", "run", "dev"]
 
 volumes:
   mongo-data:
