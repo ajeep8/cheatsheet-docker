@@ -31,7 +31,7 @@ sub/subfile2.md
 
 # 嵌入代码文件
 
-嵌入独立的代码文件，而不是把代码直接写在md文档中，会让主文件更清晰
+嵌入独立的代码文件，而不是把代码直接写在md文档代码块中，会让主文件更清晰
 
 ~~~
 ```{.c include=test.c caption="嵌入C语言代码"}
@@ -91,7 +91,7 @@ with Diagram("插图名称", show=False, direction="TB", filename="$DESTINATION$
 
 # 引入独立绘图文件
 
-将嵌入独立代码文件和代码绘图两个能力结合，可以引用独立绘图文件，这样绘图代码不必出现在md文件中，更清晰。
+结合嵌入代码文件和文本画图两个能力，可以引用独立画图文件，这样画图文本不必出现在md文件中，更清晰。
 
 ~~~
 ```{.plantuml include=docascode.puml caption="嵌入plantuml图"}

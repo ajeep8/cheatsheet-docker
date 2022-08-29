@@ -77,7 +77,7 @@ docker push username/imgname:tag
 
 # docker compose 启停
 
-用docker compose可以按定义的顺序启动多个容器，象多台服务器一样互相调用访问，形成一个系统。
+docker compose是本地编排工具，可以按定义的顺序启动多个容器，象多台服务器一样互相调用访问，形成一个系统。
 
 ```
 # 按当前目录的docker-compose.yml启动，-d为后台运行
