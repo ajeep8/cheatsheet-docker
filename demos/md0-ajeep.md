@@ -1,5 +1,12 @@
 ---
 title: markdown初步
+author: ajeep
+language: markdown
+columns: 3
+theme: blue
+border: thin
+corner: 0
+publish: yes
 ---
 
 # metadata(元数据)
