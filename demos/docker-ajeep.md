@@ -104,6 +104,11 @@ docker compose start
 - 容器的内部IP需要映射到宿主机才能被别的机器访问
 - 用compose设定比较方便一组容器互相访问，不必放出来的端口应保持在docker内部网络上不映射出来。
 
+```
+docker network ls  # 查看docker网络
+docker network rm 网络名或ID #删除docker网络
+```
+
 # docker的文件卷
 
 如果没有文件卷也没有映射到本地目录，容器运行后的数据将在容器被删除时消失，要持久化需要：
@@ -115,8 +120,3 @@ docker compose start
 docker volume ls # 查看宿主机上所有docker卷
 docker volume rm 卷名 # 删除宿主机上的docker文件卷
 ```
-
-
-
-
-

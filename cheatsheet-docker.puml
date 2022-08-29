@@ -1,0 +1,12 @@
+@startuml
+nwdiag {
+  network intranet {
+    cheatsheet [address = "5050"];
+  }
+  network docker {
+    mongodb [address = "27017"];
+    mongo_express [address = "8081"];
+    cheatsheet [address = "5000"];
+  }
+}
+@enduml
