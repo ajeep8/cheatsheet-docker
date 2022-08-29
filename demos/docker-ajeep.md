@@ -40,6 +40,10 @@ docker images # 查看所有本地的image
 docker rmi image名或imageID # 删除image
 docker inspect 容器名或ID # 查看容器信息
 
+# 复制容器内文件到宿主机
+docker cp 容器名或ID:/path/to/file .
+# 复制宿主机文件到容器内  
+docker cp file 容器名或ID:/path/
 ```
 
 # 进入到容器中
