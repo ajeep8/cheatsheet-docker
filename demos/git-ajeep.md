@@ -26,6 +26,8 @@ git checkout file  # 恢复：从本地库重新取过来，但修改丢失了�
 或：git restore file   # 好像效果和上一命令一样
 ```
 
+------
+
 **用Git命令删除文件**
 
 ```
@@ -33,6 +35,8 @@ git rm file # 删除文件并纳入暂存区(与rm file; git stage file等效)�
 git restore --staged file # 从暂存区恢复为未暂存的删除，然后用下一命令恢复删除)
 git restore file # 恢复删除的文件file
 ```
+
+------
 
 **用Git命令改名/移动文件**
 
@@ -53,6 +57,8 @@ git restore --staged file # 从暂存区恢复为未跟踪的，然后就可以�
 或：git reset HEAD file # 好像跟上一命令功能一样
 rm file # 删除
 ```
+
+------
 
 **修改文件：**
 
@@ -100,6 +106,8 @@ git push --force # git push会提示本地落后，如果要废弃本地回退�
 
 多人clone/pull了相同的版本，分别修改后push，可能会发生冲突：
 
+------
+
 **最小冲突：**
 
 1. 两人分别编辑了不同文件后push
@@ -113,6 +121,8 @@ git pull # 先把第一个人的更新同步下来
 git push # 然后直接push即可
 ```
 
+------
+
 **两人分别编辑了同一文件后push**
 
 先push的人没问题，后push的人会收到提示无法push，需要`git pull`先把第一个人的更新同步下来，这时会提示合并冲突于哪些文件。
@@ -121,6 +131,8 @@ git push # 然后直接push即可
 - 如果两人的修改位置冲突，自动合并会失败。
 
 无论哪种情况，需要检查这个冲突文件，检查自动合并情况、或编辑这个文件手工合并，然后再commit、push。
+
+------
 
 **甲编辑并push，乙删除并push了同一文件**
 

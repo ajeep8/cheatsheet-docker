@@ -70,6 +70,16 @@ linux命令行一般由命令、选项、目标等组成。
 | usermod -aG group1 user1 | 将user1加入到group1组中 |
 | w/who | 查看本机有哪些用户登录着 |
 
+# 网络相关
+
+| | |
+|-|-|
+| ifconfig | |
+| ip addr | |
+| route -n | |
+| ip route | |
+
+
 # 软件相关
 
 | | |
