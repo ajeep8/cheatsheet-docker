@@ -30,6 +30,7 @@ services:
       context: ./
       dockerfile: Dockerfile
     image: "cheatsheet:v0.1"
+    #user: "node"
     depends_on:
       - mongo
     restart: unless-stopped
