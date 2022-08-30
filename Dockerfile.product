@@ -1,0 +1,11 @@
+FROM cheatsheet:v0.1 AS dev
+RUN cd client; rm -rf *.js *.json node_modules public src /cheat-sheet-maker/.git \
+  && chown -R node.node /cheat-sheet-maker \
+  && apk del git
+
+FROM node:14-alpine AS product
+COPY --from=dev /cheat-sheet-maker /cheat-sheet-maker
+
+WORKDIR /cheat-sheet-maker
+CMD [ "npm", "run", "start", "--production" ]
+
