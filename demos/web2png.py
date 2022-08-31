@@ -23,7 +23,7 @@ for key,url in urls.items():
     driver.get(url)
     driver.set_window_size(2560,2560)
     time.sleep(2)
-    ssfile="cheatsheet-{}.png".format(key)
+    ssfile="/home/ajeep/mnt/ajeepSync/cheatsheet/cheatsheet-{}.png".format(key)
     print(ssfile)
     driver.save_screenshot(ssfile)
     screenshot=Image.open(ssfile)   
