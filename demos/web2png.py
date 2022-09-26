@@ -10,7 +10,7 @@ chrome_options.add_argument("--headless")
 chrome_options.add_argument("--disable-gpu")
 
 # https://www.selenium.dev/documentation/webdriver/getting_started/install_drivers/
-# 
+# unzip the chromedriver as your chrome version, edit the path follow
 
 driver = webdriver.Chrome(executable_path = "/home/ajeep/py3env/chromedriver_linux64_105.0.5195.52", options=chrome_options)
 
