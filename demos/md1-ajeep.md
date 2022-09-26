@@ -49,6 +49,8 @@ mermaid画图代码
 
 但mermaid的功能基本被plantuml覆盖，因此建议用PlantUML。
 
+------
+
 [PlantUML](https://plantuml.com/)不仅是画图，而是UML模型，比图信息更丰富
 
 ~~~
@@ -67,6 +69,8 @@ digraph finite_state_machine {
 ```
 ~~~
 
+------
+
 python画图有大量的样例代码，想画什么图都可以搜一个类似代码改改数据实现。
 
 ~~~
@@ -77,6 +81,8 @@ import matplotlib.pyplot as plt
 plt.savefig("$DESTINATION$", dpi=300, format="$FORMAT$")
 ```
 ~~~
+
+------
 
 [Diagrams](https://diagrams.mingrammer.com/)是python做的，可以画很漂亮的系统图。
 
@@ -89,6 +95,7 @@ with Diagram("插图名称", show=False, direction="TB", filename="$DESTINATION$
 ```
 ~~~
 
+
 # 引入独立绘图文件
 
 结合嵌入代码文件和文本画图两个能力，可以引用独立画图文件，这样画图文本不必出现在md文件中，更清晰。
@@ -97,24 +104,31 @@ with Diagram("插图名称", show=False, direction="TB", filename="$DESTINATION$
 ```{.plantuml include=docascode.puml caption="嵌入plantuml图"}
 这里的文字可选，所有文字被docascode.puml内容替代，然后渲染成图。
 ```
+~~~
 
+~~~
 ```{.graphviz include="linux.gv" caption="嵌入graphviz/dot图" #fig:linux}
 这个dot文件比较复杂，所以放独立文件比较干净漂亮。
 ```
+~~~
 
+~~~
 ```{.py2image include=matplotlib-test.py caption="嵌入Python画图"}
 python画图有大量的样例代码，想画什么图都可以搜一个类似代码改改数据实现。
 ```
+~~~
 
+~~~
 ```{.py2image include=diagrams-test.py caption="嵌入Diagrams图"}
 Diagrams图也可以用独立py文件嵌入的方法画。
 ```
+~~~
 
+~~~
 ```{.drawio include="test.drawio" caption="嵌入draw.io图"}
 draw.io是ms visio的开源替代，可以直接嵌入md文件
 ```
 ~~~
-
 
 # csv2table
 
@@ -132,6 +146,8 @@ draw.io是ms visio的开源替代，可以直接嵌入md文件
 - type：可以是simple、pipe、multiline、grid
 - aligns：列对齐字母：R/L/C/D：每列的列对齐方式(R=Right 右，L=Left 左，C=Center 中，D=Default缺省)
 
+------
+
 2. 引用外部csv文件
 
 将上述语法增加source指出csv文件：
@@ -141,6 +157,8 @@ draw.io是ms visio的开源替代，可以直接嵌入md文件
 这里的文字导出时没有，可以作为注释
 ```
 ~~~
+
+------
 
 3. 简化语法格式
 
@@ -154,31 +172,6 @@ draw.io是ms visio的开源替代，可以直接嵌入md文件
 - y/n：是否以第一行为表头
 - r/l/c/d：每列的列对齐方式(r=Right 右，l=Left 左，c=Center 中，d=Default缺省)
 
-# Fenced Div Block
-
-Fenced Div和代码块类似，是用:::扩起来的内容，也是“活”的魔法区域，只是不是执行里面的代码。
-
-**用md做pptx**
-
-要写能导出pptx的markdown很简单，就如下几条规则：
-
-1. md+pandoc只支持powerpoint缺省模板的前4个母版：标题页、节标题、标题和内容、两栏内容
-
-1. 标题页由metadata的title、author、date、subtitle生成
-
-1. 一级标题#生成节标题页，只有一个标题，不能有内容，否则导出的pptx会整个乱掉
-
-1. 二级标题##根据内容生成标题和内容页或两栏内容页
-
-    - 标题和内容页：图、表、文字(含一般文字、列表、公式等都算文字)只能有其一，内容有这3者多于1种的被分到多个页面，图/表可以有caption
-    - 两栏内容页：用::::::{.columns}扩起两个:::{.column}构成两栏内容页，每栏的内容与上条的单栏内容相同。
-
-1. 三级以上的标题作为粗体在内容中显示；图文混排可以利用caption或两栏内容，导出pptx后再做后期调整。
-
-1. :::notes扩起来的内容在演讲提示区。
-
-满足上述要求的md文件可以导出pptx，也可以导出pdf/docx，Fence不显示，所以可以生成能同时导出pdf/docx/pptx的md文件。
-
 # metadata变量
 
 除了代码块和Fenced Div Block，markdown的其他部分也可以使用pandoc插件来增强功能。
@@ -187,4 +180,51 @@ Fenced Div和代码块类似，是用:::扩起来的内容，也是“活”的�
 
 注意：使用时变量(含百分号)前后不能直接连接其他文字，有加个空格。
 
+# Fenced Div Block
 
+Fenced Div和代码块类似，是用:::扩起来的内容，也是“活”的魔法区域，只是不是执行里面的代码。
+
+要写能导出pptx的markdown很简单，就如下模板：
+
+------
+
+```markdown
+---
+title: 标题
+subtitle: 副标题
+author: 作者
+date: 日期
+comment: pptx的标题页对应metadata的内容
+---
+
+# 一级标题对应节标题页
+
+## 二级标题 之 标题和内容页
+
+md+pandoc只支持powerpoint缺省模板的前4个母版：标题页、节标题、标题和内容、两栏内容；
+
+一级标题(节标题页)只有一个标题，不能有内容，否则导出的pptx会整个乱掉
+
+图、表、文字(含一般文字、列表、公式等都算文字)只能有其一，内容有这3者多于1种的被分到多个页面，图/表可以有caption，图文混排可以利用caption或两栏内容，导出pptx后再做后期调整。
+
+### 三级以上的标题作为粗体在内容中显示
+
+:::notes
+notes扩起来的内容在演讲提示区出现，不出现在片子中；但如果导出为docx/pdf，则会在文章中出现。
+:::
+
+## 二级标题 之 两栏内容页
+
+::::::{.columns}
+:::{.column}
+两栏内容页的每栏跟"标题和内容页"的要求和限制一样
+:::
+:::{.column}
+![Markdown Logo](https://markdown.com.cn/hero.png)
+:::
+::::::
+```
+
+------
+
+满足上述要求的md文件即可导出pptx，也可以导出pdf/docx，Fence不显示，所以这是可以同时导出pdf/docx/pptx的md文件。
