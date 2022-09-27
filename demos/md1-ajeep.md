@@ -1,5 +1,15 @@
 ---
-title: markdown进阶
+title: 'markdown进阶'
+published: true
+authorUsername: 'ajeep'
+authorId: '630af874d5bb9b004200d2ff'
+theme: 'indigo'
+maxCols: '3'
+corners: 'none'
+borders: 'zero'
+defaultLang: 'markdown'
+createdAt: ISODate('2022-08-29T03:36:50.161Z')
+publishedAt: ISODate('2022-08-29T03:40:31.507Z')
 ---
 
 # 嵌入md子文档
